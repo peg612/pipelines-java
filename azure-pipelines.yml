@@ -20,12 +20,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-#- task: ServiceNow-DevOps-Server-Change-Acceleration@1
-#  inputs:
-#    connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
-#    changeRequestDetails: |
-#      {
-#      "attributes":{
-#      "sys_created_by":"paul.grupe"
-#      }
-#      }
+- task: ServiceNow-DevOps-Server-Change-Acceleration@1
+  inputs:
+    connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
+    changeRequestDetails: |
+      {
+      "attributes":{
+      "sys_created_by":"paul.grupe"
+      }
+      }
