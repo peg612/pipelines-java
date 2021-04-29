@@ -20,6 +20,29 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName'
+    serviceConnection: 'glidefastconsultingllcdemo17-Agile Demo-Generic Connection'
+    method: 'POST'
+    body: |
+          {
+            "buildNumber": "$(build.buildId)",
+            "isMultiBranch": "true",
+            "branchName": "$(build.sourceBranchName)"
+          }
+          waitForCompletion: 'true'
+- task: InvokeRESTAPI@1
+  inputs:
+    connectionType: 'connectedServiceName'
+    serviceConnection: 'glidefastconsultingllcdemo17-Agile Demo-Generic Connection'
+    method: 'POST'
+    body: |
+          {
+            "releaseNumber": "$(Release.ReleaseId)",
+            "projectName": "$(System.TeamProject)"
+          }
+          waitForCompletion: 'true'
 #- task: ServiceNow-DevOps-Server-Change-Acceleration@1
 #  inputs:
 #    connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
