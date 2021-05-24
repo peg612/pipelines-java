@@ -1,4 +1,5 @@
 # Maven
+
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -12,7 +13,10 @@ stages:
   jobs:
   - job: 'Build'
     steps:
-
+    - task: ServiceNow-DevOps-Agent-Job-Notification@1
+      inputs:
+        connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
+        Phase: 'STARTED'
     - task: ServiceNow-DevOps-Server-Change-Acceleration@1
       inputs:
         connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
@@ -22,3 +26,7 @@ stages:
           "sys_created_by":"paul.grupe"
           }
           }
+    - task: ServiceNow-DevOps-Agent-Job-Notification@1
+      inputs:
+        connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
+        Phase: 'COMPLETED'
