@@ -12,6 +12,7 @@ stages:
 - stage: Build
   jobs:
   - job: 'Build'
+    pool: server
     steps:
     - task: ServiceNow-DevOps-Agent-Job-Notification@1
       inputs:
