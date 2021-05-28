@@ -14,10 +14,6 @@ stages:
   - job: 'Build'
     pool: server
     steps:
-    - task: ServiceNow-DevOps-Agent-Job-Notification@1
-      inputs:
-        connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
-        Phase: 'STARTED'
     - task: ServiceNow-DevOps-Server-Change-Acceleration@1
       inputs:
         connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
@@ -27,7 +23,3 @@ stages:
           "sys_created_by":"paul.grupe"
           }
           }
-    - task: ServiceNow-DevOps-Agent-Job-Notification@1
-      inputs:
-        connectedServiceName: 'glidefastconsultingllcdemo17-Agile Demo-ServiceNow DevOps Service Connection'
-        Phase: 'COMPLETED'
